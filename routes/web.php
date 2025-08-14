@@ -7,9 +7,15 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
+
+Route::get('/cv', [HomeController::class, 'cv'])->name('cv');
+
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard.view');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

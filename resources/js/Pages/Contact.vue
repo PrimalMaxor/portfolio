@@ -4,16 +4,16 @@ import AppLayout from '../Layouts/AppLayout.vue';
 </script>
 
 <template>
-    <Head title="Home" />
+    <Head title="Contact" />
     
     <AppLayout>
         <div class="text-center">
             <h1 class="text-4xl font-bold text-gray-900 mb-4">
-                Welcome to My Portfolio
+                Contact Me
             </h1>
             <p class="text-xl text-gray-600">
-                Full-stack developer passionate about creating amazing web experiences
+                Get in touch for collaborations, opportunities, or just to say hello
             </p>
         </div>
     </AppLayout>
-</template>
+</template> 
