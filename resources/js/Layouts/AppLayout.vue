@@ -1,11 +1,11 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3';
-import { languages } from '../lang/index.js';
+import { useLanguage } from '../composables/useLanguage.js';
 
 const isSidebarOpen = ref(false);
 const isDarkMode = ref(localStorage.getItem('darkMode') === 'true');
-const currentLanguage = ref(localStorage.getItem('language') || 'EN');
+const { currentLanguage, toggleLanguage, t } = useLanguage();
 
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
@@ -19,16 +19,6 @@ const toggleDarkMode = () => {
     isDarkMode.value = !isDarkMode.value;
     localStorage.setItem('darkMode', isDarkMode.value);
 };
-
-const toggleLanguage = () => {
-    const newLanguage = currentLanguage.value === 'EN' ? 'NL' : 'EN';
-    currentLanguage.value = newLanguage;
-    localStorage.setItem('language', newLanguage);
-};
-
-const getCurrentLanguageTranslations = computed(() => languages[currentLanguage.value]);
-
-const t = computed(() => getCurrentLanguageTranslations.value);
 
 const navigationItems = [
     { name: 'home', href: '/', route: 'home' },
