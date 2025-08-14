@@ -17,7 +17,10 @@ defineProps({
 const user = usePage().props.auth.user;
 
 const form = useForm({
-    name: user.name,
+    first_name: user.first_name,
+    middle_name: user.middle_name,
+    last_name: user.last_name,
+    phone_number: user.phone_number,
     email: user.email,
 });
 </script>
@@ -38,20 +41,51 @@ const form = useForm({
             @submit.prevent="form.patch(route('profile.update'))"
             class="mt-6 space-y-6"
         >
-            <div>
-                <InputLabel for="name" value="Name" />
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <InputLabel for="first_name" value="First Name" />
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+                    <TextInput
+                        id="first_name"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.first_name"
+                        required
+                        autofocus
+                        autocomplete="given-name"
+                    />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                    <InputError class="mt-2" :message="form.errors.first_name" />
+                </div>
+
+                <div>
+                    <InputLabel for="middle_name" value="Middle Name" />
+
+                    <TextInput
+                        id="middle_name"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.middle_name"
+                        autocomplete="additional-name"
+                    />
+
+                    <InputError class="mt-2" :message="form.errors.middle_name" />
+                </div>
+
+                <div>
+                    <InputLabel for="last_name" value="Last Name" />
+
+                    <TextInput
+                        id="last_name"
+                        type="text"
+                        class="mt-1 block w-full"
+                        v-model="form.last_name"
+                        required
+                        autocomplete="family-name"
+                    />
+
+                    <InputError class="mt-2" :message="form.errors.last_name" />
+                </div>
             </div>
 
             <div>
@@ -67,6 +101,20 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div>
+                <InputLabel for="phone_number" value="Phone Number" />
+
+                <TextInput
+                    id="phone_number"
+                    type="tel"
+                    class="mt-1 block w-full"
+                    v-model="form.phone_number"
+                    autocomplete="tel"
+                />
+
+                <InputError class="mt-2" :message="form.errors.phone_number" />
             </div>
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">

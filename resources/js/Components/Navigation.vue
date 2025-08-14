@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
-import ApplicationLogo from './ApplicationLogo.vue';
 
 const isMenuOpen = ref(false);
 
@@ -17,7 +16,6 @@ const navigationItems = [
     { name: 'Home', href: '/', current: true },
     { name: 'About', href: '/about', current: false },
     { name: 'Projects', href: '/projects', current: false },
-    { name: 'Skills', href: '/skills', current: false },
     { name: 'CV', href: '/curriculum-vitae', current: false },
     { name: 'Contact', href: '/contact', current: false },
 ];
