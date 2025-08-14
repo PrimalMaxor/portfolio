@@ -25,8 +25,8 @@ const navigationItems = [
     { name: 'about', href: '/about', route: 'about' },
     { name: 'projects', href: '/projects', route: 'projects' },
     { name: 'cv', href: '/cv', route: 'cv' },
-    { name: 'dashboard', href: '/dashboard', route: 'dashboard' },
     { name: 'contact', href: '/contact', route: 'contact' },
+    { name: 'dashboard', href: '/admin/dashboard', route: 'dashboard' },
 ];
 
 const user = usePage().props.auth?.user;

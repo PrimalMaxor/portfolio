@@ -46,12 +46,4 @@ class HomeController extends Controller
     {
         return Inertia::render('CV');
     }
-
-    /**
-     * Display the dashboard page
-     */
-    public function dashboard()
-    {
-        return Inertia::render('Dashboard');
-    }
 }
